@@ -3,23 +3,61 @@ export default class MemoryStore {
         this.store = new Map();
     }
 
-    get(key) {
+    async get(key) {
         return this.store.get(key);
     }
 
-    set(key, value) {
+    async set(key, value) {
         this.store.set(key, value);
     }
 
-    delete(key) {
-        this.store.delete(key);
+    async delete(key) {
+        return this.store.delete(key);
     }
 
-    has(key) {
+    async has(key) {
         return this.store.has(key);
     }
 
-    clear() {
+    async clear() {
         this.store.clear();
+    }
+
+    async incrementIfAllowed(key, limit, windowMs) {
+        const now = Date.now();
+        const state = this.store.get(key);
+
+        if (!state || now - state.windowStart >= windowMs) {
+            const newState = {
+                count: 1,
+                windowStart: now,
+            };
+
+            this.store.set(key, newState);
+
+            return {
+                allowed: true,
+                ...newState,
+            };
+        }
+
+        if (state.count >= limit) {
+            return {
+                allowed: false,
+                ...state,
+            };
+        }
+
+        const newState = {
+            count: state.count + 1,
+            windowStart: state.windowStart,
+        };
+
+        this.store.set(key, newState);
+
+        return {
+            allowed: true,
+            ...newState,
+        };
     }
 }

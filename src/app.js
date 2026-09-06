@@ -1,7 +1,17 @@
 import express from "express";
 import MemoryStore from "./stores/MemoryStore.js";
+import rateLimiter from "./middleware/rateLimiter.js";
 
 const app = express();
+
+app.use(
+    rateLimiter({
+        algorithm: "token-bucket",
+        capacity: 5,
+        refillRate: 1,
+    })
+);
+
 app.use(express.json());
 
 const store = new MemoryStore();
@@ -14,7 +24,7 @@ app.get("/", (req, res) => {
 
 app.get("/api/test", (req, res) => {
     res.json({
-        sucess: true
+        success: true
     });
 });
 
