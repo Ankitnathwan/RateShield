@@ -28,7 +28,7 @@ RateShield provides multiple rate-limiting algorithms, pluggable storage backend
 ## Installation
 
 ```bash
-npm install rateshield
+npm install @ankitn7/rateshield
 ```
 
 ## Quick Start
