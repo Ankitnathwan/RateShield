@@ -159,8 +159,7 @@ It is useful for:
 Example:
 
 ```javascript
-import { rateLimiter } from "rateshield";
-import MemoryStore from "rateshield/src/stores/MemoryStore.js";
+import { rateLimiter, MemoryStore, } from "rateshield";
 
 rateLimiter({
     algorithm: "fixed-window",
@@ -181,8 +180,7 @@ This is useful when an application runs across multiple processes or server inst
 Example:
 
 ```javascript
-import { rateLimiter } from "rateshield";
-import RedisStore from "rateshield/src/stores/RedisStore.js";
+import { rateLimiter, RedisStore, } from "rateshield";
 
 const store = new RedisStore({
     url: "redis://localhost:6379",
