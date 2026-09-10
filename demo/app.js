@@ -1,6 +1,6 @@
 import express from "express";
-import MemoryStore from "./stores/MemoryStore.js";
-import rateLimiter from "./middleware/rateLimiter.js";
+import MemoryStore from "../src/stores/MemoryStore.js";
+import rateLimiter from "../src/middleware/rateLimiter.js";
 
 const app = express();
 

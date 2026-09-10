@@ -4,12 +4,9 @@ export default function storeContract(createStore) {
 
         beforeEach(async () => {
             store = createStore();
-            await store.clear();
         });
 
         afterEach(async () => {
-            await store.clear();
-
             if (store.disconnect) {
                 await store.disconnect();
             }
@@ -34,6 +31,7 @@ export default function storeContract(createStore) {
 
         test("deletes a value", async () => {
             await store.set("user1", 42);
+
             await store.delete("user1");
 
             expect(await store.has("user1")).toBe(false);
@@ -87,6 +85,5 @@ export default function storeContract(createStore) {
             expect(fourth.allowed).toBe(false);
             expect(fourth.count).toBe(3);
         });
-
     });
 }

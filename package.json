@@ -1,17 +1,34 @@
 {
   "name": "rateshield",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Configurable rate limiting middleware for Express.js",
   "type": "module",
+  "main": "src/index.js",
+  "files": [
+    "src"
+  ],
+  "keywords": [
+    "rate-limit",
+    "rate-limiter",
+    "express",
+    "middleware",
+    "redis"
+  ],
   "scripts": {
-    "dev": "nodemon src/server.js",
-    "start": "node src/server.js",
+    "dev": "nodemon demo/server.js",
+    "start": "node demo/server.js",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --watchAll"
   },
-  "keywords": [],
-  "author": "",
+  "author": "Ankit Nathwan",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Ankitnathwan/RateShield.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Ankitnathwan/RateShield/issues"
+  },
+  "homepage": "https://github.com/Ankitnathwan/RateShield",
   "dependencies": {
     "express": "^5.2.1",
     "redis": "^6.2.1"
@@ -19,6 +36,7 @@
   "devDependencies": {
     "@jest/globals": "^30.4.1",
     "jest": "^30.4.2",
-    "nodemon": "^3.1.14"
+    "nodemon": "^3.1.14",
+    "supertest": "^7.2.2"
   }
 }
